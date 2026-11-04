@@ -1,0 +1,38 @@
+<!-- [COPY & IMPLEMENT] -->
+<!-- blog/templates/blog/register.html -->
+{% extends "blog/base.html" %}
+
+{% block title %}Register - COLAB Blog{% endblock title %}
+
+{% block content %}
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <h2 class="h3 fw-bold mb-4">Create an Account</h2>
+            
+            <!-- Standard Form -->
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+            </form>
+            
+            <div class="text-center my-3 text-muted">OR</div>
+
+            <!-- OAuth Social Buttons (Direct Links, No Form Token Needed) -->
+            <div class="d-grid gap-2">
+                <a href="/accounts/google/login/" class="btn btn-outline-danger">
+                    Continue with Google
+                </a>
+                <a href="/accounts/github/login/" class="btn btn-outline-dark">
+                    Continue with GitHub
+                </a>
+            </div>
+
+            <hr class="my-4">
+            <div class="text-muted small">
+                Already have an account? 
+                <a href="{% url 'login' %}" class="fw-bold text-decoration-none ms-1">Log In Here</a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

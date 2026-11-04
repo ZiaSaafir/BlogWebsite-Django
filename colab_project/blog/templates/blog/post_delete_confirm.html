@@ -1,0 +1,22 @@
+<!-- [COPY & IMPLEMENT] -->
+<!-- blog/templates/blog/post_confirm_delete.html -->
+{% extends "blog/base.html" %}
+
+{% block title %}Delete Post - COLAB Blog{% endblock title %}
+
+{% block content %}
+    <div class="card shadow-sm border-0">
+        <div class="card-body text-center py-4">
+            <h2 class="h3 fw-bold text-danger mb-3">Delete Post?</h2>
+            <p class="text-muted fs-5 mb-4">
+                Are you sure you want to delete <strong>"{{ post.title }}"</strong>? This action cannot be undone.
+            </p>
+            
+            <form method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger me-2">Yes, Delete Post</button>
+                <a href="{% url 'post-detail' post.id %}" class="btn btn-outline-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
